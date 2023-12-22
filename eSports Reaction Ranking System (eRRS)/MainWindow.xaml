@@ -3,10 +3,90 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:eSports_Reaction_Ranking_System__eRRS_"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
-
-    </Grid>
+        Title="eSports Reaction Ranking System (eRRS)" Height="770" Width="400"
+        ResizeMode="NoResize"
+        Icon="/Resources/Logo.png">
+    <StackPanel> <!--Puts all items in a vertical list-->
+        <ListView Margin="10 10 10 0" Name="studentDataList" Height="500"> <!--List of students; initially empty-->
+            <ListView.View>
+                <GridView x:Name="sDLColumns"> <!--Horizontal columns-->
+                    <GridViewColumn Header="Name" Width="144" DisplayMemberBinding="{Binding Name}"/> <!--Data comes from Name of Student object-->
+                    <GridViewColumn Header="Reaction Time [ms]" Width="104" DisplayMemberBinding="{Binding ReactionTime_ms}"/> <!--Data comes from ReactionTime_ms of Student Object-->
+                    <GridViewColumn Header="Category" Width="132" DisplayMemberBinding="{Binding Category}"/> <!--Data comes from Category of Student Object; initially null-->
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <Grid>
+            <Button Grid.Column="0" Name="deleteStudent" Content="Delete Student" Margin="10 -1 280 0" Click="deleteStudent_Click" Width="Auto"/>
+            <Label Grid.Column="1" 
+                x:Name="reactionNotPosNumberErrorMsg"
+                Margin="105 0 10 0"
+                Content="Error - Reaction Time must be a positive number"
+                Padding="5" Background="Transparent"
+                IsHitTestVisible="False"
+                Foreground="Red"/>
+            <Label Grid.Column="1"
+                x:Name="noStudentNameErrorMsg"
+                Margin="105 0 10 0"
+                Content="Error - No name has been supplied"
+                Padding="5"
+                Background="Transparent"
+                IsHitTestVisible="False"
+                Foreground="Red"/>
+            <Label Grid.Column="1"
+                x:Name="noStudentSelectedErrorMsg"
+                Margin="105 0 10 0"
+                Content="Error - No student selected"
+                Padding="5"
+                Background="Transparent"
+                IsHitTestVisible="False"
+                Foreground="Red"/>
+        </Grid>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <!--* makes sizes proportional-->
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <TextBox Grid.Column="0" Name="studentNameEntry" Margin="10 10 5 0" Padding="5" TextChanged="studentNameEntry_TextChanged"/>
+            <Label Grid.Column="0"
+                x:Name="studentNameEntryPlaceholder"
+                Margin="13 10 0 0"
+                Padding="5"
+                Content="Enter Student Name"
+                Background="Transparent"
+                Opacity="0.5"
+                IsHitTestVisible="False"/>
+            <TextBox Grid.Column="1" Name="studentReactionEntry" Margin="5 10 10 0" Padding="5" TextChanged="studentReactionEntry_TextChanged"/>
+            <Label Grid.Column="1"
+                x:Name="studentReactionEntryPlaceholder"
+                Margin="8 10 0 0"
+                Padding="5"
+                Content="Enter Reaction Time [ms]"
+                Background="Transparent"
+                Opacity="0.5"
+                IsHitTestVisible="False"/>
+        </Grid>
+        <Button Name="addStudent" Content="Add Student" Margin="10 10 10 0" Padding="4" Click="addStudent_Click"/>
+        <Button Name="calculateRankings" Content="Calculate Categories" Margin="10 10 10 0" Padding="4" Click="calculateCategories_Click"/>
+        <Label Grid.Column="1"
+            x:Name="noStudentsErrorMsg"
+            Margin="10 -5 10 0"
+            Content="Error - No students in list"
+            Padding="5"
+            Background="Transparent"
+            IsHitTestVisible="False"
+            Foreground="Red"/>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <!--* makes sizes proportional-->
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Button Grid.Column="0" Name="resetData" Content="Reset" Margin="10 10 5 0" Padding="4" Click="resetData_Click"/>
+            <Button Grid.Column="1" Name="exportCSV" Content="Export" Margin="5 10 10 0" Padding="4" Click="exportCSV_Click"/>
+        </Grid>
+        <Label Content="eRRS v1.0.0 - Konnah Aldread" HorizontalAlignment="Right" Opacity="0.5"/>
+    </StackPanel>
 </Window>
