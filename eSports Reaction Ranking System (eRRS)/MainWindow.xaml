@@ -5,10 +5,19 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
         Title="eSports Reaction Ranking System (eRRS)" Height="770" Width="400"
-        ResizeMode="NoResize"
         Icon="/Resources/Logo.png">
-    <StackPanel> <!--Puts all items in a vertical list-->
-        <ListView Margin="10 10 10 0" Name="studentDataList" Height="500"> <!--List of students; initially empty-->
+    <Grid> <!--Puts all items in a vertical list-->
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="30"/>
+        </Grid.RowDefinitions>
+        <ListView Grid.Row="0" Margin="10 10 10 0" Name="studentDataList"> <!--List of students; initially empty-->
             <ListView.View>
                 <GridView x:Name="sDLColumns"> <!--Horizontal columns-->
                     <GridViewColumn Header="Name" Width="144" DisplayMemberBinding="{Binding Name}"/> <!--Data comes from Name of Student object-->
@@ -17,18 +26,22 @@
                 </GridView>
             </ListView.View>
         </ListView>
-        <Grid>
-            <Button Grid.Column="0" Name="deleteStudent" Content="Delete Student" Margin="10 -1 280 0" Click="deleteStudent_Click" Width="Auto"/>
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition Width="6*"/>
+            </Grid.ColumnDefinitions>
+            <Button Grid.Column="0" Name="deleteStudent" Content="Delete Student" Margin="10 -1 0 0" Click="deleteStudent_Click" Width="Auto"/>
             <Label Grid.Column="1" 
                 x:Name="reactionNotPosNumberErrorMsg"
-                Margin="105 0 10 0"
+                Margin="0 0 10 0"
                 Content="Error - Reaction Time must be a positive number"
                 Padding="5" Background="Transparent"
                 IsHitTestVisible="False"
                 Foreground="Red"/>
             <Label Grid.Column="1"
                 x:Name="noStudentNameErrorMsg"
-                Margin="105 0 10 0"
+                Margin="0 0 10 0"
                 Content="Error - No name has been supplied"
                 Padding="5"
                 Background="Transparent"
@@ -36,14 +49,14 @@
                 Foreground="Red"/>
             <Label Grid.Column="1"
                 x:Name="noStudentSelectedErrorMsg"
-                Margin="105 0 10 0"
+                Margin="0 0 10 0"
                 Content="Error - No student selected"
                 Padding="5"
                 Background="Transparent"
                 IsHitTestVisible="False"
                 Foreground="Red"/>
         </Grid>
-        <Grid>
+        <Grid Grid.Row="2">
             <Grid.ColumnDefinitions>
                 <!--* makes sizes proportional-->
                 <ColumnDefinition Width="*"/>
@@ -68,9 +81,9 @@
                 Opacity="0.5"
                 IsHitTestVisible="False"/>
         </Grid>
-        <Button Name="addStudent" Content="Add Student" Margin="10 10 10 0" Padding="4" Click="addStudent_Click"/>
-        <Button Name="calculateRankings" Content="Calculate Categories" Margin="10 10 10 0" Padding="4" Click="calculateCategories_Click"/>
-        <Label Grid.Column="1"
+        <Button Grid.Row="3" Name="addStudent" Content="Add Student" Margin="10 10 10 0" Padding="4" Click="addStudent_Click"/>
+        <Button Grid.Row="4" Name="calculateRankings" Content="Calculate Categories" Margin="10 10 10 0" Padding="4" Click="calculateCategories_Click"/>
+        <Label Grid.Row = "5" Grid.Column="1"
             x:Name="noStudentsErrorMsg"
             Margin="10 -5 10 0"
             Content="Error - No students in list"
@@ -78,7 +91,7 @@
             Background="Transparent"
             IsHitTestVisible="False"
             Foreground="Red"/>
-        <Grid>
+        <Grid Grid.Row="6">
             <Grid.ColumnDefinitions>
                 <!--* makes sizes proportional-->
                 <ColumnDefinition Width="*"/>
@@ -87,6 +100,6 @@
             <Button Grid.Column="0" Name="resetData" Content="Reset" Margin="10 10 5 0" Padding="4" Click="resetData_Click"/>
             <Button Grid.Column="1" Name="exportCSV" Content="Export" Margin="5 10 10 0" Padding="4" Click="exportCSV_Click"/>
         </Grid>
-        <Label Content="eRRS v1.0.0 - Konnah Aldread" HorizontalAlignment="Right" Opacity="0.5"/>
-    </StackPanel>
+        <Label Grid.Row="7" Content="eRRS v1.1.0 - Konnah Aldread" HorizontalAlignment="Right" Opacity="0.5"/>
+    </Grid>
 </Window>
