@@ -4,7 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
-        Title="eSports Reaction Ranking System (eRRS)" Height="770" Width="400"
+        Title="eSports Reaction Ranking System (eRRS)" Height="900" Width="450"
         Icon="/Resources/Logo.png">
     <Grid> <!--Puts all items in a vertical list-->
         <Grid.RowDefinitions>
@@ -17,15 +17,23 @@
             <RowDefinition Height="40"/>
             <RowDefinition Height="30"/>
         </Grid.RowDefinitions>
-        <ListView Grid.Row="0" Margin="10 10 10 0" Name="studentDataList"> <!--List of students; initially empty-->
-            <ListView.View>
-                <GridView x:Name="sDLColumns"> <!--Horizontal columns-->
-                    <GridViewColumn Header="Name" Width="144" DisplayMemberBinding="{Binding Name}"/> <!--Data comes from Name of Student object-->
-                    <GridViewColumn Header="Reaction Time [ms]" Width="104" DisplayMemberBinding="{Binding ReactionTime_ms}"/> <!--Data comes from ReactionTime_ms of Student Object-->
-                    <GridViewColumn Header="Category" Width="132" DisplayMemberBinding="{Binding Category}"/> <!--Data comes from Category of Student Object; initially null-->
-                </GridView>
-            </ListView.View>
-        </ListView>
+        
+        <DataGrid Grid.Row="0" 
+            CanUserAddRows="False" 
+            CanUserDeleteRows="False" 
+            IsReadOnly="True" 
+            Margin="10 10 10 0" 
+            Name="studentDataList" 
+            AutoGenerateColumns="False" 
+            HeadersVisibility="Column"
+            GridLinesVisibility="None"
+            ScrollViewer.VerticalScrollBarVisibility="Visible">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Name" Binding="{Binding Name}" Width="6*"/>
+                <DataGridTextColumn Header="Reaction Time [ms]" Binding="{Binding ReactionTime_ms}" Width="110"/>
+                <DataGridTextColumn Header="Category" Binding="{Binding Category}" Width="130"/>
+            </DataGrid.Columns>
+        </DataGrid>
         <Grid Grid.Row="1">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="2*"/>
