@@ -44,6 +44,7 @@ namespace eSports_Reaction_Ranking_System__eRRS_
                         // Clears user input text boxes
                         studentNameEntry.Text = "";
                         studentReactionEntry.Text = "";
+                        studentDataList.ScrollIntoView(student);
                     } else { noStudentNameErrorMsg.Visibility = Visibility.Visible; }
                 } else { reactionNotPosNumberErrorMsg.Visibility = Visibility.Visible; }
             } else { reactionNotPosNumberErrorMsg.Visibility = Visibility.Visible; }
@@ -95,7 +96,7 @@ namespace eSports_Reaction_Ranking_System__eRRS_
         private void calculateCategories_Click(object sender, RoutedEventArgs e)
         {
             if (students.Count <= 0) 
-            { 
+            {
                 noStudentsErrorMsg.Visibility = Visibility.Visible; 
             }
             else 
@@ -110,18 +111,21 @@ namespace eSports_Reaction_Ranking_System__eRRS_
         private void assignRankings(double mean, double standardDeviation)
         {
             if (standardDeviation == 0) // Prevent division by 0
-            { 
-                foreach (Student student in students) { student.Category = "Standard"; return; }
-            }
-            foreach (Student student in students)
             {
-                double zScore = (student.ReactionTime_ms - mean) / standardDeviation;  // Eq 2. From Analysis
-                // Inequalities from Objectives
-                if (zScore <= -2) { student.Category = "Outstanding"; }
-                else if (zScore <= -1) { student.Category = "Good"; }
-                else if (zScore < 1) { student.Category = "Standard"; }
-                else if (zScore < 2) { student.Category = "Requires Improvement"; }
-                else { student.Category = "Inadequate"; }
+                foreach (Student student in students) { student.Category = "Standard"; }
+            }
+            else
+            {
+                foreach (Student student in students)
+                {
+                    double zScore = (student.ReactionTime_ms - mean) / standardDeviation;  // Eq 2. From Analysis
+                                                                                           // Inequalities from Objectives
+                    if (zScore <= -2) { student.Category = "Outstanding"; }
+                    else if (zScore <= -1) { student.Category = "Good"; }
+                    else if (zScore < 1) { student.Category = "Standard"; }
+                    else if (zScore < 2) { student.Category = "Requires Improvement"; }
+                    else { student.Category = "Inadequate"; }
+                }
             }
             // In order to update ListView
             studentDataList.ItemsSource = null;
