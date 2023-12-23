@@ -4,8 +4,12 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
-        Title="eSports Reaction Ranking System (eRRS)" Height="900" Width="450"
-        Icon="/Resources/Logo.png">
+        Title="eSports Reaction Ranking System (eRRS)"
+        Height="600"
+        Width="380"
+        Icon="/Resources/Logo.png"
+        MinHeight="450"
+        MinWidth="388">
     <Grid> <!--Puts all items in a vertical list-->
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
@@ -39,7 +43,7 @@
                 <ColumnDefinition Width="2*"/>
                 <ColumnDefinition Width="6*"/>
             </Grid.ColumnDefinitions>
-            <Button Grid.Column="0" Name="deleteStudent" Content="Delete Student" Margin="10 -1 0 0" Click="deleteStudent_Click" Width="Auto"/>
+            <Button Grid.Column="0" Name="deleteStudent" Content="Delete Student" Margin="10 -1 0 0" Click="deleteStudent_Click" Width="Auto" BorderBrush="#FF707070"/>
             <Label Grid.Column="1" 
                 x:Name="reactionNotPosNumberErrorMsg"
                 Margin="0 0 10 0"
