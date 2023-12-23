@@ -4,8 +4,12 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
-        Title="eSports Reaction Ranking System (eRRS)" Height="900" Width="450"
-        Icon="/Resources/Logo.png">
+        Title="eSports Reaction Ranking System (eRRS)"
+        Height="600"
+        Width="380"
+        Icon="/Resources/Logo.png"
+        MinHeight="450"
+        MinWidth="388">
     <Grid> <!--Puts all items in a vertical list-->
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
