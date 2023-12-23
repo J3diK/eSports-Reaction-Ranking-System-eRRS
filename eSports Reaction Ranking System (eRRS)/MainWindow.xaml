@@ -43,7 +43,7 @@
                 <ColumnDefinition Width="2*"/>
                 <ColumnDefinition Width="6*"/>
             </Grid.ColumnDefinitions>
-            <Button Grid.Column="0" Name="deleteStudent" Content="Delete Student" Margin="10 -1 0 0" Click="deleteStudent_Click" Width="Auto" BorderBrush="#FF707070"/>
+            <Button Grid.Column="0" Name="deleteStudent" Content="Delete Student" Margin="10 -1 0 0" Click="deleteStudent_Click" Width="Auto"/>
             <Label Grid.Column="1" 
                 x:Name="reactionNotPosNumberErrorMsg"
                 Margin="0 0 10 0"
