@@ -112,6 +112,6 @@
             <Button Grid.Column="0" Name="resetData" Content="Reset" Margin="10 10 5 0" Padding="4" Click="resetData_Click"/>
             <Button Grid.Column="1" Name="exportCSV" Content="Export" Margin="5 10 10 0" Padding="4" Click="exportCSV_Click"/>
         </Grid>
-        <Label Grid.Row="7" Content="eRRS v1.1.0 - Konnah Aldread" HorizontalAlignment="Right" Opacity="0.5"/>
+        <Label Grid.Row="7" Content="eRRS v1.2.1 - Konnah Aldread" HorizontalAlignment="Right" Opacity="0.5"/>
     </Grid>
 </Window>
